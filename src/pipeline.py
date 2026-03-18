@@ -1,40 +1,38 @@
 """
 pipeline.py — Orquestador del Pipeline ETL
-Proyecto Final ETL — Maestria en IA y Ciencia de Datos (UAO)
-
 Ejecuta el flujo completo: Extraccion -> Transformacion -> Carga
-Uso: python src/pipeline.py
+Uso: python pipeline.py
 """
 import time
-from extract import extract_all
-from transform import transform_all
-from load import load_all
+from extract import extraer_todo
+from transform import transformar_todo
+from load import cargar_todo
 
 
-def run_pipeline():
+def main():
     """Ejecuta el pipeline ETL completo."""
     print("*" * 60)
     print("  PIPELINE ETL — Publicidad Digital Cliente_A (2025)")
     print("*" * 60)
     start = time.time()
 
-    # E — Extraccion
-    raw_data = extract_all()
+    # E — Extraccion: retorna tupla de 6 DataFrames
+    df_ga4, df_gads, df_meta, df_gsc_chart, df_gsc_queries, df_ventas = extraer_todo()
 
-    # T — Transformacion
-    transformed_data = transform_all(raw_data)
+    # T — Transformacion: recibe 6, retorna 7 (los 6 limpios + master)
+    df_ga4, df_gads, df_meta, df_gsc_chart, df_gsc_queries, df_ventas, master = transformar_todo(
+        df_ga4, df_gads, df_meta, df_gsc_chart, df_gsc_queries, df_ventas
+    )
 
-    # L — Carga
-    output_path = load_all(transformed_data)
+    # L — Carga: recibe los 7 DataFrames, guarda master y genera reporte
+    outpath = cargar_todo(df_ga4, df_gads, df_meta, df_gsc_chart, df_gsc_queries, df_ventas, master)
 
     elapsed = time.time() - start
     print("\n" + "*" * 60)
     print(f"  PIPELINE COMPLETADO en {elapsed:.1f} segundos")
-    print(f"  Archivo generado: {output_path}")
+    print(f"  Archivo generado: {outpath}")
     print("*" * 60)
-
-    return transformed_data
 
 
 if __name__ == '__main__':
-    run_pipeline()
+    main()
