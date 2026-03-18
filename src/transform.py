@@ -38,9 +38,9 @@ def limpiar_meta_ads(df):
     df = df.copy()
     df['fecha_inicio'] = pd.to_datetime(df['date_start'], errors='coerce')
     df['fecha_fin'] = pd.to_datetime(df['date_stop'], errors='coerce')
-    for col in ['impressions', 'clicks', 'reach']:
+    for col in ['impressions', 'clicks', 'reach', 'results']:
         df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0).astype(int)
-    for col in ['spend', 'cpm', 'cpc', 'ctr', 'frequency']:
+    for col in ['spend', 'cpm', 'cpc', 'ctr', 'frequency', 'cost_per_result']:
         df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0.0)
     df['fuente'] = 'meta_ads'
     df = df.drop_duplicates()
