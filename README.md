@@ -16,7 +16,7 @@ Pipeline ETL automatizado que consolida datos de campañas publicitarias digital
 | Nombre | GitHub |
 |--------|--------|
 | Christian Felipe Trujillo Franco | @cristiantru |
-| Juan Sebastián Hoyos Espinosa | |
+| Juan Sebastián Hoyos Espinosa | @jshe1113 |
 | Koraima Torres | @koraimatorresd |
 | Alexandra Libreros | @AlexaLibreros15 |
 
