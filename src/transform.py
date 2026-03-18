@@ -109,6 +109,12 @@ def construir_master_table(df_ga4, df_gads, df_gsc_chart, df_ventas):
     gads_diario['gads_cpc'] = gads_diario.apply(
         lambda r: (r['gads_cost'] / r['gads_clicks']) if r['gads_clicks'] > 0 else 0, axis=1
     )
+    gads_diario['gads_cpa'] = gads_diario.apply(
+        lambda r: (r['gads_cost'] / r['gads_conversions']) if r['gads_conversions'] > 0 else 0, axis=1
+    )
+
+    # Meta Ads: agregar frecuencia promedio mensual como referencia
+    # (Meta solo reporta datos mensuales, no diarios)
 
     # GSC por fecha
     gsc_diario = df_gsc_chart[['fecha', 'clicks', 'impressions']].copy()
