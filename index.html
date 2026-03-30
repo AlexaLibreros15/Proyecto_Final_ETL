@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis Publicitario 2025 — Cliente A</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#F4F6F8;color:#2C3E50;font-size:14px}
+  .container{max-width:1100px;margin:0 auto;padding:24px}
+
+  .header{background:#1B4F72;color:#fff;padding:22px 26px;border-radius:8px;margin-bottom:22px}
+  .header h1{font-size:17px;font-weight:700;line-height:1.4;margin-bottom:6px}
+  .header p{font-size:12px;opacity:.7}
+
+  .context-box{background:#fff;border-left:4px solid #1B4F72;border-radius:0 8px 8px 0;padding:16px 20px;margin-bottom:22px;font-size:13px;line-height:1.7}
+  .context-box strong{color:#1B4F72}
+
+  .kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:22px}
+  .kpi{background:#fff;border-radius:8px;padding:16px;text-align:center;border-bottom:3px solid #1B4F72}
+  .kpi.green{border-bottom-color:#27AE60}
+  .kpi.gray{border-bottom-color:#BDC3C7}
+  .kpi-label{font-size:11px;color:#95A5A6;font-weight:600;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+  .kpi-value{font-size:22px;font-weight:700;color:#1B4F72}
+  .kpi.green .kpi-value{color:#27AE60}
+  .kpi-sub{font-size:11px;color:#BDC3C7;margin-top:3px}
+
+  .section{background:#fff;border-radius:8px;padding:22px;margin-bottom:22px}
+  .section-num{font-size:11px;font-weight:700;color:#BDC3C7;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+  .section-title{font-size:15px;font-weight:700;color:#2C3E50;margin-bottom:4px;line-height:1.4}
+  .section-sub{font-size:12px;color:#95A5A6;margin-bottom:18px;line-height:1.5}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  canvas{max-height:220px}
+
+  /* Sección qué funcionó */
+  .verdict-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px}
+  .verdict-card{border-radius:6px;padding:14px}
+  .verdict-card.funciono{background:#EAFAF1;border-top:3px solid #27AE60}
+  .verdict-card.nofunciono{background:#FDEDEC;border-top:3px solid #E74C3C}
+  .verdict-card.pendiente{background:#FEF9E7;border-top:3px solid #F39C12}
+  .verdict-card.oportunidad{background:#EBF5FB;border-top:3px solid #1B4F72}
+  .verdict-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
+  .verdict-title.verde{color:#1E8449}
+  .verdict-title.rojo{color:#C0392B}
+  .verdict-title.amarillo{color:#B7950B}
+  .verdict-title.azul{color:#1B4F72}
+  .verdict-item{font-size:12px;line-height:1.6;margin-bottom:4px;padding-left:12px;position:relative}
+  .verdict-item::before{content:'›';position:absolute;left:0;font-weight:700}
+
+  .mini-stat{background:#F8F9FA;border-radius:6px;padding:12px;text-align:center}
+  .mini-stat-val{font-size:19px;font-weight:700;color:#1B4F72;margin-bottom:2px}
+  .mini-stat-label{font-size:11px;color:#95A5A6}
+
+  table{width:100%;border-collapse:collapse;font-size:12px;margin-top:14px}
+  th{background:#F4F6F8;color:#7F8C8D;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.3px;padding:8px 10px;text-align:left;border-bottom:2px solid #E8E8E8}
+  td{padding:8px 10px;border-bottom:1px solid #F0F0F0;vertical-align:middle}
+  tr:hover td{background:#FAFAFA}
+
+  .chart-note{font-size:11px;color:#7F8C8D;margin-top:8px;line-height:1.6}
+
+  .footer{text-align:center;font-size:11px;color:#BDC3C7;padding:16px;margin-top:6px}
+
+  @media(max-width:700px){
+    .kpi-row,.grid2,.grid3,.verdict-grid{grid-template-columns:1fr 1fr}
+    canvas{max-height:180px}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ENCABEZADO -->
+<div class="header">
+  <h1>En 2025, Cliente A invirtió $52,906 en publicidad digital y vendió 1,011 pólizas de seguro — un retorno de $3.54 por cada $1 invertido</h1>
+  <p>Google Ads + Meta Ads + Google Analytics + Search Console + Ventas · Datos anonimizados · Ventas en Quetzales guatemaltecos convertidas a USD (÷7.7) · Pipeline ETL automático en Python</p>
+</div>
+
+<!-- CONTEXTO -->
+<div class="context-box">
+  Cliente A es una empresa de seguros de vehículos en Guatemala. En 2025 invirtió en publicidad digital en Google y Meta (Facebook/Instagram). Este análisis une por primera vez los datos de 5 sistemas distintos que antes vivían separados: <em>¿cuánto se invirtió? → ¿cuánta gente llegó al sitio? → ¿cuántos seguros se vendieron?</em> El pipeline ETL construido en Python extrae, limpia y consolida estas 5 fuentes automáticamente en 0.1 segundos.
+</div>
+
+<!-- KPIs -->
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-label">Inversión total</div>
+    <div class="kpi-value">$52,906</div>
+    <div class="kpi-sub">Todo 2025, en USD</div>
+  </div>
+  <div class="kpi green">
+    <div class="kpi-label">Ventas generadas</div>
+    <div class="kpi-value">$187,413</div>
+    <div class="kpi-sub">1,011 pólizas vendidas</div>
+  </div>
+  <div class="kpi green">
+    <div class="kpi-label">Retorno sobre inversión</div>
+    <div class="kpi-value">3.5x</div>
+    <div class="kpi-sub">Por cada $1 → $3.54 en ventas</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Costo por póliza</div>
+    <div class="kpi-value">$52</div>
+    <div class="kpi-sub">Inversión ÷ pólizas</div>
+  </div>
+  <div class="kpi gray">
+    <div class="kpi-label">Valor promedio de póliza</div>
+    <div class="kpi-value">$185</div>
+    <div class="kpi-sub">Ticket promedio en USD</div>
+  </div>
+</div>
+
+<!-- SECCIÓN 1: INVERSIÓN -->
+<div class="section">
+  <div class="section-num">Sección 1 — Inversión por canal</div>
+  <div class="section-title">Google Ads concentró el 81% del presupuesto — y dentro de Google, un solo tipo de campaña generó el mayor resultado al menor costo</div>
+  <div class="section-sub">El presupuesto se repartió entre Google Ads ($42,658) y Meta Ads ($10,248). Dentro de Google existen 4 tipos de campaña con rendimientos muy distintos. <em>Performance Max</em> es el nombre del formato automático de Google que combina búsqueda, display y video en un solo paquete.</div>
+  <div class="grid2">
+    <div>
+      <canvas id="chCanalInv"></canvas>
+      <p class="chart-note"><em>Nota.</em> Meta Ads representa el 19% del presupuesto pero no tiene trazabilidad directa hacia pólizas vendidas — su contribución a ventas no puede confirmarse con los datos actuales.</p>
+    </div>
+    <div>
+      <canvas id="chGadsCanal"></canvas>
+      <p class="chart-note"><em>Nota.</em> Performance Max logró el menor costo por conversión con solo el 15% del presupuesto de Google; Display gastó una proporción similar y costó 25 veces más por cada conversión obtenida.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 2: INVERSIÓN MENSUAL -->
+<div class="section">
+  <div class="section-num">Sección 2 — Comportamiento durante el año</div>
+  <div class="section-title">La inversión fluctuó entre $2,143 y $6,413 según el mes — sin una relación directa entre meses de alta inversión y meses de más ventas</div>
+  <div class="section-sub">Ver cómo varió el presupuesto mes a mes permite identificar si la empresa apostó más en los momentos correctos o si la inversión siguió otro criterio.</div>
+  <div class="grid2">
+    <div>
+      <canvas id="chInvMes"></canvas>
+      <p class="chart-note"><em>Nota.</em> Septiembre y octubre tuvieron la menor inversión del año ($2,247 y $2,143) y al mismo tiempo el mayor tráfico web — lo que sugiere que el tráfico orgánico compensó la reducción de pauta en esos meses.</p>
+    </div>
+    <div>
+      <canvas id="chPolizasMes"></canvas>
+      <p class="chart-note"><em>Nota.</em> La diferencia entre el mes más bajo (noviembre, 69 pólizas) y el más alto (marzo, 107) es del 55% — una distribución estable que no sigue los picos de inversión publicitaria.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 3: VENTAS -->
+<div class="section">
+  <div class="section-num">Sección 3 — Ventas y productos</div>
+  <div class="section-title">El 96% de las pólizas son Auto por Kilómetro, pero Auto Tradicional vale 3.3 veces más por póliza</div>
+  <div class="section-sub">Cliente A vende dos tipos de seguro: Auto por Kilómetro (pago según kilómetros recorridos, precio accesible) y Auto Tradicional (cobertura convencional, precio mayor). Los datos de ventas incluyen número de póliza, producto, fecha de venta y monto en Quetzales, convertidos a USD.</div>
+  <div class="grid2">
+    <div>
+      <canvas id="chProductos"></canvas>
+      <p class="chart-note"><em>Nota.</em> Auto Tradicional representa solo el 4% de las pólizas vendidas pero genera el 13% del revenue — una sola póliza Tradicional equivale en valor a 3.3 pólizas KM.</p>
+    </div>
+    <div>
+      <canvas id="chRevenueMes"></canvas>
+      <p class="chart-note"><em>Nota.</em> Marzo registró el mayor revenue del año ($21,590) con una de las menores inversiones del primer semestre ($3,809) — la brecha más amplia entre ventas e inversión del año.</p>
+    </div>
+  </div>
+  <div class="grid3" style="margin-top:16px">
+    <div class="mini-stat"><div class="mini-stat-val">$162,784</div><div class="mini-stat-label">Revenue Auto KM (87% del total)</div></div>
+    <div class="mini-stat"><div class="mini-stat-val">$24,629</div><div class="mini-stat-label">Revenue Auto Tradicional (13%)</div></div>
+    <div class="mini-stat"><div class="mini-stat-val">$52</div><div class="mini-stat-label">Costo promedio por póliza vendida</div></div>
+  </div>
+</div>
+
+<!-- SECCIÓN 4: TRÁFICO WEB -->
+<div class="section">
+  <div class="section-num">Sección 4 — Tráfico web (Google Analytics 4)</div>
+  <div class="section-title">El sitio recibió 452,146 visitas en 2025 — el tráfico de septiembre en adelante triplicó al del primer semestre</div>
+  <div class="section-sub">Google Analytics 4 registra cada visita al sitio web. Permite ver si la publicidad realmente llevó personas al sitio y en qué meses hubo más actividad. Los datos de enero comienzan el día 23 (el sistema se activó ese día).</div>
+  <canvas id="chGA4"></canvas>
+  <p class="chart-note"><em>Nota.</em> El segundo semestre (julio–diciembre) concentró el 72% de todas las visitas del año con menor inversión publicitaria que el primero — señal de que el canal orgánico y de búsqueda ganó peso progresivamente a lo largo del año.</p>
+</div>
+
+<!-- SECCIÓN 5: BÚSQUEDAS ORGÁNICAS -->
+<div class="section">
+  <div class="section-num">Sección 5 — Visibilidad en buscadores (Google Search Console)</div>
+  <div class="section-title">El sitio apareció 58,978 veces en resultados de Google y recibió 2,668 clics orgánicos — una tasa de clic del 4.5%</div>
+  <div class="section-sub">Search Console mide cuándo el sitio aparece en los resultados de Google sin pagar. Complementa la inversión pagada: si alguien busca "seguro de auto Guatemala" y el sitio aparece sin costo adicional, ese es tráfico orgánico.</div>
+  <div class="grid2">
+    <div>
+      <canvas id="chGSC"></canvas>
+      <p class="chart-note"><em>Nota.</em> La posición promedio 4.2 indica que el sitio aparece en el primer resultado de la primera página de Google — aun así, solo 1 de cada 22 personas que ven el resultado hace clic, lo que apunta a una oportunidad en el título y descripción de la página.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:center;gap:12px">
+      <div class="mini-stat"><div class="mini-stat-val">58,978</div><div class="mini-stat-label">Apariciones en resultados de Google</div></div>
+      <div class="mini-stat"><div class="mini-stat-val">2,668</div><div class="mini-stat-label">Clics orgánicos (sin costo publicitario)</div></div>
+      <div class="mini-stat"><div class="mini-stat-val">4.5%</div><div class="mini-stat-label">De cada 100 apariciones, 4.5 generan un clic</div></div>
+      <div class="mini-stat"><div class="mini-stat-val">4.2</div><div class="mini-stat-label">Posición promedio en resultados de Google</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 6: QUÉ FUNCIONÓ / QUÉ NO -->
+<div class="section">
+  <div class="section-num">Sección 6 — Qué funcionó, qué no funcionó y dónde invertir en 2026</div>
+  <div class="section-title">Performance Max fue la pieza más eficiente del portafolio — las campañas de conversión en Meta no tuvieron trazabilidad hacia ventas reales</div>
+  <div class="section-sub">El análisis consolida los datos de las 5 fuentes para identificar qué piezas de la estrategia deben mantenerse, cuáles reformularse y dónde existe oportunidad para 2026.</div>
+
+  <div class="verdict-grid">
+    <div class="verdict-card funciono">
+      <div class="verdict-title verde">✓ Funcionó — mantener en 2026</div>
+      <div class="verdict-item"><strong>Performance Max (Google):</strong> El 15% del presupuesto Google generó el costo más bajo por conversión ($1.36). Relación gasto-resultado superior a todos los demás formatos.</div>
+      <div class="verdict-item"><strong>Search (Google):</strong> El 75% del presupuesto Google con $7.61 por conversión y 4,179 conversiones. Canal confiable y predecible.</div>
+      <div class="verdict-item"><strong>Meta Tráfico:</strong> 186,688 visitas al sitio a $0.02 por clic. Precio muy bajo para llevar personas al sitio.</div>
+      <div class="verdict-item"><strong>Auto KM como producto principal:</strong> Demanda sostenida los 12 meses con 967 pólizas vendidas.</div>
+    </div>
+    <div class="verdict-card nofunciono">
+      <div class="verdict-title rojo">✗ No funcionó — revisar antes de repetir</div>
+      <div class="verdict-item"><strong>Meta Conversiones (WhatsApp):</strong> $4,262 invertidos generaron 22 mensajes de WhatsApp a $193 c/u. No hay forma de saber si esos mensajes se convirtieron en pólizas porque los sistemas no están conectados.</div>
+      <div class="verdict-item"><strong>Display (Google):</strong> $1,989 con 57 conversiones a $34.63 c/u. El costo por conversión fue 25 veces mayor que Performance Max con el mismo presupuesto.</div>
+      <div class="verdict-item"><strong>Alta inversión en Abril sin retorno proporcional:</strong> $6,286 en abril generó el peor costo por póliza del año ($84). No hubo más ventas que en meses de menor inversión.</div>
+    </div>
+    <div class="verdict-card pendiente">
+      <div class="verdict-title amarillo">? Sin dato suficiente — necesita seguimiento</div>
+      <div class="verdict-item"><strong>¿Cuántos mensajes de WhatsApp de Meta se convirtieron en pólizas?</strong> Los 22 mensajes de las campañas de Conversiones no tienen un número de póliza asociado. Se necesita conectar el CRM con los datos de Meta.</div>
+      <div class="verdict-item"><strong>¿El tráfico de Meta en Sep-Nov generó las ventas de esos meses?</strong> Los datos muestran correlación temporal pero no causalidad. Sin UTMs en formularios no se puede confirmar.</div>
+    </div>
+    <div class="verdict-card oportunidad">
+      <div class="verdict-title azul">→ Oportunidad para 2026</div>
+      <div class="verdict-item"><strong>Auto Tradicional:</strong> Solo 44 pólizas en 2025 pero con un valor 3.3x mayor ($560 vs $168). Una campaña específica para este producto podría aumentar el revenue total sin aumentar el presupuesto.</div>
+      <div class="verdict-item"><strong>Reasignar Display a Performance Max:</strong> Los $1,989 de Display a $34.63/conversión rinden 25x más si se mueven a Performance Max ($1.36/conversión).</div>
+      <div class="verdict-item"><strong>Conectar WhatsApp con el CRM:</strong> Si se puede rastrear qué mensajes de Meta se convierten en pólizas, Meta podría demostrar mucho más valor del que los datos actuales muestran.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 7: EL PIPELINE ETL -->
+<div class="section">
+  <div class="section-num">Sección 7 — El pipeline ETL que genera este análisis</div>
+  <div class="section-title">5 fuentes con formatos distintos se unifican automáticamente en 0.1 segundos — antes esto requería trabajo manual en 5 hojas de cálculo separadas</div>
+  <div class="section-sub">El pipeline ETL (Extracción, Transformación y Carga) es el proceso automático que lee, limpia y une los datos. Está construido en Python con 4 archivos modulares: extract.py, transform.py, load.py y pipeline.py.</div>
+  <table>
+    <thead>
+      <tr><th>Fuente</th><th>Registros extraídos</th><th>Columnas</th><th>Método</th><th>Qué información aporta</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Google Ads</strong></td><td>1,219 filas</td><td>9</td><td>API REST v23</td><td>Inversión diaria, clics, impresiones y conversiones por tipo de campaña</td></tr>
+      <tr><td><strong>Meta Ads</strong></td><td>26 filas</td><td>14</td><td>Graph API v22.0</td><td>Inversión mensual, alcance, frecuencia y tipo de resultado por campaña</td></tr>
+      <tr><td><strong>Google Analytics 4</strong></td><td>7,446 filas</td><td>9</td><td>BigQuery SQL</td><td>Visitas diarias al sitio web, fuente de tráfico, páginas vistas</td></tr>
+      <tr><td><strong>Search Console</strong></td><td>365 filas</td><td>5</td><td>CSV manual</td><td>Apariciones en Google, clics orgánicos, posición promedio por día</td></tr>
+      <tr><td><strong>Ventas / Pólizas</strong></td><td>1,011 filas</td><td>6</td><td>CSV manual</td><td>Número de póliza, producto, fecha de venta, monto en Quetzales</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+<div class="footer">
+  Pipeline ETL · Python + pandas · Chart.js · Repositorio: github.com/AlexaLibreros15/Proyecto_Final_ETL · Dashboard: thepipo93.github.io/etl-dashboard-ipalmera<br>
+  Equipo: Christian Trujillo · Juan Sebastián Hoyos · Koraima Torres · Alexandra Libreros · UAO Maestría IA y Ciencia de Datos 2026-1S
+</div>
+
+<script>
+const ML=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+const P='#1B4F72', L='#AED6F1', G='#BDC3C7', GR='#27AE60', OR='#E67E22', RD='#E74C3C';
+
+// ── 1. Canal inversión (doughnut) ──
+new Chart(document.getElementById('chCanalInv'),{type:'doughnut',data:{
+  labels:['Google Ads — $42,658 (81%)','Meta Ads — $10,248 (19%)'],
+  datasets:[{data:[42658,10248],backgroundColor:[P,OR],borderWidth:0}]
+},options:{plugins:{legend:{position:'bottom',labels:{font:{size:11}}}},cutout:'60%',
+  layout:{padding:10}}});
+
+// Google Ads por tipo: inversión vs CPA
+new Chart(document.getElementById('chGadsCanal'),{type:'bar',data:{
+  labels:['Search','Perf. Max','Demand Gen','Display'],
+  datasets:[
+    {label:'Inversión USD',data:[31811,6575,2282,1989],backgroundColor:[P+'cc',GR+'cc',L,G],yAxisID:'y1',barPercentage:.6},
+    {label:'Costo por conversión USD',data:[7.61,1.36,19.47,34.63],type:'line',
+     borderColor:RD,backgroundColor:RD,pointRadius:6,yAxisID:'y2',tension:.3}
+  ]
+},options:{plugins:{legend:{position:'top',labels:{font:{size:11}}}},
+  scales:{
+    y1:{position:'left',title:{display:true,text:'Inversión USD'},grid:{color:'#eee'},beginAtZero:true,ticks:{callback:v=>'$'+(v/1000).toFixed(0)+'K'}},
+    y2:{position:'right',title:{display:true,text:'Costo por conversión USD'},grid:{display:false},beginAtZero:true,ticks:{callback:v=>'$'+v}},
+    x:{grid:{display:false}}
+  }}});
+
+// ── 2. Inversión mensual ──
+const invMes=[3065,4767,3809,6286,4798,5184,4749,4060,2247,2143,5418,6413];
+new Chart(document.getElementById('chInvMes'),{type:'bar',data:{
+  labels:ML,
+  datasets:[{label:'Inversión USD',data:invMes,backgroundColor:P+'cc',barPercentage:.7}]
+},options:{plugins:{legend:{display:false},
+  tooltip:{callbacks:{label:d=>'Inversión: $'+d.raw.toLocaleString()}}},
+  scales:{y:{beginAtZero:true,grid:{color:'#eee'},ticks:{callback:v=>'$'+(v/1000).toFixed(0)+'K'}},x:{grid:{display:false}}}}});
+
+// Pólizas por mes
+const polizasMes=[79,90,107,75,79,78,96,87,83,78,69,90];
+new Chart(document.getElementById('chPolizasMes'),{type:'bar',data:{
+  labels:ML,
+  datasets:[{label:'Pólizas vendidas',data:polizasMes,backgroundColor:GR+'99',barPercentage:.7}]
+},options:{plugins:{legend:{display:false},
+  tooltip:{callbacks:{label:d=>d.raw+' pólizas vendidas'}}},
+  scales:{y:{beginAtZero:true,grid:{color:'#eee'}},x:{grid:{display:false}}}}});
+
+// ── 3. Productos ──
+new Chart(document.getElementById('chProductos'),{type:'doughnut',data:{
+  labels:['Auto por Kilómetro — 967 pólizas · $168 promedio','Auto Tradicional — 44 pólizas · $560 promedio'],
+  datasets:[{data:[967,44],backgroundColor:[P,OR],borderWidth:0}]
+},options:{plugins:{legend:{position:'bottom',labels:{font:{size:11}}}},cutout:'60%'}});
+
+// Revenue vs inversión mensual
+const revMes=[14672,15877,21590,13161,15167,12085,18126,13563,15218,16260,13280,18412];
+new Chart(document.getElementById('chRevenueMes'),{type:'bar',data:{
+  labels:ML,
+  datasets:[
+    {label:'Ventas USD',data:revMes,backgroundColor:GR+'99'},
+    {label:'Inversión USD',data:invMes,backgroundColor:P+'99'}
+  ]
+},options:{plugins:{legend:{position:'top',labels:{font:{size:11}}}},
+  scales:{y:{beginAtZero:true,grid:{color:'#eee'},ticks:{callback:v=>'$'+(v/1000).toFixed(0)+'K'}},x:{grid:{display:false}}}}});
+
+// ── 4. GA4 sesiones — datos reales del CSV + BigQuery (dic completo via BigQuery) ──
+const ga4S=[2525,42509,22467,41037,12157,10651,10316,6505,46403,56256,58210,143110];
+new Chart(document.getElementById('chGA4'),{type:'bar',data:{
+  labels:ML,
+  datasets:[{label:'Sesiones web',data:ga4S,
+    backgroundColor:ga4S.map((v,i)=>i===0?'#BDC3C7':v>40000?P:v>20000?L:G+'99'),
+    barPercentage:.7}]
+},options:{plugins:{legend:{display:false},
+  tooltip:{callbacks:{label:d=>{
+    if(d.dataIndex===0) return d.raw.toLocaleString()+' sesiones (desde el 23 enero)';
+    return d.raw.toLocaleString()+' sesiones';
+  }}}},
+  scales:{y:{beginAtZero:true,grid:{color:'#eee'},ticks:{callback:v=>(v/1000).toFixed(0)+'K'}},x:{grid:{display:false}}}}});
+
+// ── 5. GSC — datos reales del CSV ──
+// Fuente: gsc_chart_2025.csv. Total año: 2,668 clics | 58,978 impresiones
+const gscClics=[6,130,843,169,118,146,190,164,394,227,159,122];
+const gscImpr=[144,3529,11284,4114,5056,4596,3595,3817,4194,4483,6412,7754];
+new Chart(document.getElementById('chGSC'),{type:'bar',data:{
+  labels:ML,
+  datasets:[
+    {label:'Impresiones (apariciones en Google)',data:gscImpr,backgroundColor:L+'cc',yAxisID:'y2',barPercentage:.7},
+    {label:'Clics orgánicos',data:gscClics,type:'line',borderColor:P,backgroundColor:P,pointRadius:4,yAxisID:'y1',tension:.4}
+  ]
+},options:{plugins:{legend:{position:'top',labels:{font:{size:11}}}},
+  scales:{
+    y1:{position:'left',title:{display:true,text:'Clics'},grid:{color:'#eee'},beginAtZero:true},
+    y2:{position:'right',title:{display:true,text:'Impresiones'},grid:{display:false},beginAtZero:true,ticks:{callback:v=>v>=1000?(v/1000).toFixed(0)+'K':v}},
+    x:{grid:{display:false}}
+  }}});
+</script>
+</body>
+</html>
